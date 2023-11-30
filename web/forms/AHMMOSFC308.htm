@@ -1,0 +1,696 @@
+<div id="AHMMOSFC308" class="div-app" data-version="1.0">  
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            margin: auto;
+            position: fixed;
+            top: 12%;
+            width: 50%; /* Full width */
+            height: auto; /* Full height */
+        }
+        .close {
+            color: white;
+            float: right;
+            font-weight: bold;
+            font-size: medium;
+        }
+        .modal-header {
+            padding: auto;
+            background-color: e92030;
+            color: white;
+        }
+        .modal-body {padding: 10px;}
+
+    </style>
+    <div class="global_message"></div>
+    <div id="ahmmosfc308p01" class="subpage subpage-default" data-path="Create Shipping List">
+        <div class="col-md-12 form-group-button" style="background: white;">
+            <!--Header-->
+            <div class="row form-filter-panel" id="ahmmosfc308p01FilterPanel">
+                <div class="form-horizontal">
+                    <div class="row" style="margin-left: 0px">   
+                        <div class="col-md-6">    
+                            <div class="col-md-12"> 
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308storageLov" class="col-sm-4 control-label">Storage Location <span style="color: red;">*</span></label>
+                                    <div class="lookup-wrapper col-sm-6">
+                                        <div class="input-group lookup" 
+                                             data-url="/jx09/ahmmosfc308-pst/rest/mo/sfc308/lov-storage-location"
+                                             data-lookup-pre-func="ahmmosfc308LovStorage" 
+                                             data-columns='[{"id":"vitemcode","name":"Storage Location","visible":"true","sortable":"false"},
+                                             {"id":"vitemdesc","name":"Storage Location Desc","visible":"true","sortable":"false"},
+                                             {"id":"vitemname","name":"Plant","visible":"true","sortable":"false"},
+                                             {"id":"vplantdesc","name":"Plant Desc","visible":"true","sortable":"false"}]'
+                                             data-callback='{"ahmmosfc308storageLov":"vitemcode","ahmmosfc308plant":"vitemname"}'
+                                             data-response-handler="responseHandler">
+                                            <input id="ahmmosfc308storageLov" class="form-control input-lookup" placeholder="" maxlength="100">
+                                            <span class="input-group-btn">
+                                                <button id="ahmmosfc308storageLovbtn" class="btn btn-default large-button btn-lookup" type="button">LOV</button>
+                                            </span>
+                                        </div>
+
+                                        <script>
+                                            function ahmmosfc308LovStorage(params) {
+                                                params.search = {
+                                                    "VPARAM": $('#ahmmosfc308storageLov').val()
+                                                };
+                                                if (params.sort == undefined) {
+                                                    return{
+                                                        limit: params.limit,
+                                                        offset: params.offset,
+                                                        search: params.search
+                                                    };
+                                                }
+
+                                                return params;
+                                            }
+                                        </script>
+
+                                    </div>                           
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308plant" class="col-sm-4 control-label">Plant </label>
+                                    <div class="col-sm-6">
+                                        <input id="ahmmosfc308plant" type="text" class="form-control" disabled="" />
+                                    </div>                               
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308wctLov" class="col-sm-4 control-label">WCT ID <span style="color: red;">*</span></label>
+                                    <div class="lookup-wrapper col-sm-6">
+                                        <div class="input-group lookup" 
+                                             data-url="/jx09/ahmmosfc308-pst/rest/mo/sfc308/lov-wct-id"
+                                             data-lookup-pre-func="ahmmosfc308LovWCT" 
+                                             data-columns='[{"id":"wctid","name":"WCT ID","visible":"true","sortable":"false"},
+                                             {"id":"wctdesc","name":"WCT Desc","visible":"true","sortable":"false"}]'
+                                             data-callback='{"ahmmosfc308wctLov":"wctid"}'
+                                             data-response-handler="responseHandler">
+                                            <input id="ahmmosfc308wctLov" class="form-control input-lookup" placeholder="" maxlength="100">
+                                            <span class="input-group-btn">
+                                                <button id="ahmmosfc308wctLovbtn" class="btn btn-default large-button btn-lookup" type="button">LOV</button>
+                                            </span>
+                                        </div>
+
+                                        <script>
+                                            function ahmmosfc308LovWCT(params) {
+                                                params.search = {
+                                                    "VPARAM": $('#ahmmosfc308wctLov').val(),
+                                                    "VPLANT": $('#ahmmosfc308plant').val()
+                                                };
+                                                if (params.sort == undefined) {
+                                                    return{
+                                                        limit: params.limit,
+                                                        offset: params.offset,
+                                                        search: params.search
+                                                    };
+                                                }
+
+                                                return params;
+                                            }
+                                        </script>
+                                    </div>                           
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308presenceDate" class="col-sm-4 control-label">Presence Date <span style="color:red">* </span></label>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                            <input id="ahmmosfc308presenceDate" type="text" class="form-control" maxlength="11"/>
+                                            <span id="ahmmosfc308presenceDateSpn" class="input-group-addon" style="cursor:pointer">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>                               
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308etd" class="col-sm-4 control-label">ETD <span style="color:red">* </span></label>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                            <input id="ahmmosfc308etd" type="text" class="form-control" maxlength="11"/>
+                                            <span id="ahmmosfc308etdSpn" class="input-group-addon" style="cursor:pointer">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>                               
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308eta" class="col-sm-4 control-label">ETA <span style="color:red">* </span></label>
+                                    <div class="col-sm-6">
+                                        <div class="input-group">
+                                            <input id="ahmmosfc308eta" type="text" class="form-control" maxlength="11"/>
+                                            <span id="ahmmosfc308etaSpn" class="input-group-addon" style="cursor:pointer">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>                               
+                                </div>
+
+                                <div class="form-group-button">
+                                    <button id="ahmmosfc308_btn_submit_header" class="btn bg-blue button-rounded"
+                                            onclick="ahmmosfc308submitHeader(this);
+                                                    return false;">
+                                        Submit Header
+                                    </button>
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308caseid" class="col-sm-4 control-label">Case ID <span style="color:red">* </span></label>
+                                    <div class="col-sm-6">
+                                        <input id="ahmmosfc308caseid" type="text" class="form-control" disabled="" onkeyup="ahmmosfc308enterevt(event, this)"/>
+                                    </div>                               
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6"> 
+                            <div class="col-md-12">
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308police" class="col-sm-4 control-label">Police No <span style="color:red">* </span></label>
+                                    <div class="col-sm-6">
+                                        <input id="ahmmosfc308police" type="text" class="form-control" />
+                                    </div>                               
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308netto" class="col-sm-4 control-label">Netto <span style="color:red">* </span></label>
+                                    <div class="col-sm-6">
+                                        <input id="ahmmosfc308netto" type="number" class="form-control" style="text-align:right" min="1"/>
+                                    </div>                               
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308bruto" class="col-sm-4 control-label">Bruto <span style="color:red">* </span></label>
+                                    <div class="col-sm-6">
+                                        <input id="ahmmosfc308bruto" type="number" class="form-control" style="text-align:right" min="1"/>
+                                    </div>                               
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308measurement" class="col-sm-4 control-label">Measurement <span style="color:red">* </span></label>
+                                    <div class="col-sm-6">
+                                        <input id="ahmmosfc308measurement" type="text" class="form-control" />
+                                    </div>                               
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308custLov" class="col-sm-4 control-label">Customer Detail <span style="color: red;">*</span></label>
+                                    <div class="lookup-wrapper col-sm-6">
+                                        <div class="input-group lookup" 
+                                             data-url="/jx09/ahmmosfc308-pst/rest/mo/sfc308/lov-customer"
+                                             data-lookup-pre-func="ahmmosfc308LovCustomer" 
+                                             data-lookup-change-func="ahmmosfc308LovCustomerAfter"
+                                             data-columns='[{"id":"custId","name":"Customer ID","visible":"true","sortable":"false"},
+                                             {"id":"custDesc","name":"Customer Address","visible":"true","sortable":"false"}]'
+                                             data-callback='{"ahmmosfc308custLov":"custId","ahmmosfc308custdesc":"custDesc"}'
+                                             data-response-handler="responseHandler">
+                                            <input id="ahmmosfc308custLov" class="form-control input-lookup" placeholder="" maxlength="100">
+                                            <span class="input-group-btn">
+                                                <button id="ahmmosfc308custLovbtn" class="btn btn-default large-button btn-lookup" type="button">LOV</button>
+                                            </span>
+                                        </div>
+
+                                        <script>
+                                            function ahmmosfc308LovCustomer(params) {
+                                                params.search = {
+                                                    "VPARAM": $('#ahmmosfc308custLov').val()
+                                                };
+                                                if (params.sort == undefined) {
+                                                    return{
+                                                        limit: params.limit,
+                                                        offset: params.offset,
+                                                        search: params.search
+                                                    };
+                                                }
+
+                                                return params;
+                                            }
+                                            function ahmmosfc308LovCustomerAfter(params) {
+                                                $("#ahmmosfc308DoTable").bootstrapTable("refresh");
+                                            }
+                                        </script>
+                                    </div>                           
+                                </div>
+
+                                <div class="form-group large-font">
+                                    <label for="ahmmosfc308custdesc" class="col-sm-4 control-label">Customer Address </label>
+                                    <div class="col-sm-6">
+                                        <input id="ahmmosfc308custdesc" type="text" class="form-control" disabled="" />
+                                    </div>                               
+                                </div>                                
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <!--Table-->
+            <div id="table-container">
+                <div class="col-md-6"> 
+                    <table id="ahmmosfc308CaseTable"
+                           data-unique-id="caseId">
+                        <thead>
+                            <tr>
+                                <th data-formatter='ahmmosfc308rowNumber' data-valind="center" class="text-center">No</th>
+                                <th data-field="caseId" data-visible="true" data-valind="center" class="text-center">Case ID</th>
+                                <th data-field="qty" data-visible="true" data-valind="center" class="text-center">Qty</th>
+                                <th data-formatter='ahmmosfc308DetailCase' data-valind="center" class="text-center">Detail</th>
+                                <th data-checkbox="true" data-valign="middle"></th>
+                            </tr>
+                        </thead>                       
+                    </table>
+
+                    <div>
+                        <br>
+                        <button id="ahmmosfc308DeleteBtn" class="btn btn-danger" onclick="ahmmosfc308DeleteDataCase(this)" disabled="">Delete Selected</button>
+                        <br><br><br>
+                        <button id="ahmmosfc308SubmitBtn" class="btn bg-blue" onclick="ahmmosfc308Submit(this)" disabled="">Submit</button>
+                        <button id="ahmmosfc308CancelBtn" class="btn btn-danger" onclick="refreshForm(this, event)">Cancel</button>
+                    </div>
+                </div>
+                <div class="col-md-6"> 
+
+                    <table id="ahmmosfc308DoTable"
+                           data-method="post"
+                           data-url="/jx09/ahmmosfc308-pst/rest/mo/sfc308/get-do"
+                           data-content-type="application/json"
+                           data-data-type="json"
+                           data-query-params-type="limit"
+                           data-query-params="ahmmosfc308DoSearch"
+                           data-response-handler="loadData"
+                           data-side-pagination="server"
+                           data-pagination="true"
+                           data-unique-id="rownum"
+                           data-checkbox-header="false"
+                           data-single-select="true">
+                        <thead>
+                            <tr>
+                                <th data-field="rownum" data-visible="true" data-valind="center" class="text-center">No</th>
+                                <th data-field="nodo" data-visible="true" data-valind="center" class="text-center">Delivery Order</th>
+                                <th data-field="partnum" data-visible="true" data-valind="center" class="text-center">Part Number</th>
+                                <th data-field="type" data-visible="true" data-valind="center" class="text-center">Type</th>
+                                <th data-field="color" data-visible="true" data-valind="center" class="text-center">Color</th>
+                                <th data-field="qty" data-visible="true" data-valind="center" class="text-center">Qty</th>
+                                <th data-checkbox="true" data-valign="middle"></th>
+                            </tr>
+                        </thead>                       
+                    </table>
+                </div>
+            </div>
+            <!--Popup Detail-->
+            <div id="modal" class="modal">
+                <!--content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <label>Detail</label>
+                        <span class="close">&times;</span>
+                    </div>
+                    <div class="modal-body">
+                        <table id="ahmmosfc308DetailCaseDataTable"
+                               data-method="post"
+                               data-url="/jx09/ahmmosfc308-pst/rest/mo/sfc308/get-list-partnum"
+                               data-content-type="application/json"
+                               data-data-type="json"
+                               data-query-params-type="limit"
+                               data-query-params="ahmmosfc308ListPartSearch"
+                               data-response-handler="loadData"
+                               data-side-pagination="server"
+                               data-pagination="true">
+                            <thead>
+                                <tr>
+                                    <th data-formatter='ahmmosfc308rowNumber' data-valind="center" class="text-center">No</th>
+                                    <th data-field="partnum" data-visible="true" data-valind="center" class="text-center">Part No</th>
+                                    <th data-field="engineno" data-visible="true" data-valind="center" class="text-center">Engine No</th>
+                                    <th data-field="type" data-valind="center" class="text-center">Type</th>
+                                    <th data-field="qty" data-valind="center" class="text-center">Qty</th>
+                                </tr>
+                            </thead>                       
+                        </table>
+                        <button class="btn btn-danger" style="align-items: right" onclick="ahmmosfc308CloseDetailData(this)">Back</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var caseid = "";
+    var partno = "";
+
+    var months = {
+        '0': 'Jan', '1': 'Feb', '2': 'Mar', '3': 'Apr', '4': 'May', '5': 'Jun',
+        '6': 'Jul', '7': 'Aug', '8': 'Sep', '9': 'Oct', '10': 'Nov', '11': 'Dec'
+    };
+
+    var today = new Date();
+    var date = today.getDate();
+    var month = today.getMonth();
+    var year = today.getFullYear();
+
+    $('#ahmmosfc308presenceDate').val(date + '-' + months[month] + '-' + year);
+    $('#ahmmosfc308etd').val(date + '-' + months[month] + '-' + year);
+    $('#ahmmosfc308eta').val(date + '-' + months[month] + '-' + year);
+
+    var date1 = new Date();
+    date1.setDate(date1.getDate() - 1);
+
+    $('#ahmmosfc308presenceDate').datetimepicker({
+        minDate: date1,
+        disabledDates: [date1],
+        format: 'DD-MMM-YYYY'
+    });
+
+    $('#ahmmosfc308eta').datetimepicker({
+        minDate: date1,
+        disabledDates: [date1],
+        format: 'DD-MMM-YYYY'
+    });
+
+    $('#ahmmosfc308etd').datetimepicker({
+        minDate: date1,
+        disabledDates: [date1],
+        format: 'DD-MMM-YYYY'
+    });
+
+    $('#ahmmosfc308presenceDateSpn').on('click', function () {
+        $('#ahmmosfc308presenceDate').focus();
+    });
+
+    $('#ahmmosfc308etaSpn').on('click', function () {
+        $('#ahmmosfc308eta').focus();
+    });
+
+    $('#ahmmosfc308etdSpn').on('click', function () {
+        $('#ahmmosfc308etd').focus();
+    });
+
+
+    function ahmmosfc308parseDate(s) {
+        if (!s) {
+            return "";
+        }
+        var months = {
+            jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5,
+            jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11
+        };
+        var p = s.split('-');
+        return new Date(p[2], months[p[1].toLowerCase()], p[0]);
+    }
+
+    function ahmmosfc308submitHeader(obj) {
+        _fw_validation_clear(obj);
+        _fw_validation_add(obj, 'ahmmosfc308storageLov', 'required');
+        _fw_validation_add(obj, 'ahmmosfc308wctLov', 'required');
+        _fw_validation_add(obj, 'ahmmosfc308presenceDate', 'required');
+        _fw_validation_add(obj, 'ahmmosfc308etd', 'required');
+        _fw_validation_add(obj, 'ahmmosfc308eta', 'required');
+        _fw_validation_add(obj, 'ahmmosfc308police', 'required');
+        _fw_validation_add(obj, 'ahmmosfc308netto', 'required');
+        _fw_validation_add(obj, 'ahmmosfc308bruto', 'required');
+        _fw_validation_add(obj, 'ahmmosfc308measurement', 'required');
+        _fw_validation_add(obj, 'ahmmosfc308custLov', 'required');
+
+        if (_fw_validation_validate(obj)) {
+            if (ahmmosfc308parseDate($('#ahmmosfc308eta').val()) <= ahmmosfc308parseDate($('#ahmmosfc308etd').val())) {
+                _fw_setMessage(obj, 0, "ETD harus lebih kecil dari ETA!");
+            } else {
+                const selectedTable = $("#ahmmosfc308DoTable").bootstrapTable("getSelections")[0];
+                if (selectedTable) {
+                    $('#ahmmosfc308storageLov').attr("disabled", "true");
+                    $('#ahmmosfc308storageLovbtn').attr("disabled", "true");
+                    $('#ahmmosfc308wctLov').attr("disabled", "true");
+                    $('#ahmmosfc308wctLovbtn').attr("disabled", "true");
+                    $('#ahmmosfc308presenceDate').attr("disabled", "true");
+                    $('#ahmmosfc308etd').attr("disabled", "true");
+                    $('#ahmmosfc308eta').attr("disabled", "true");
+                    $('#ahmmosfc308presenceDate').attr("disabled", "true");
+                    $('#ahmmosfc308police').attr("disabled", "true");
+                    $('#ahmmosfc308netto').attr("disabled", "true");
+                    $('#ahmmosfc308bruto').attr("disabled", "true");
+                    $('#ahmmosfc308measurement').attr("disabled", "true");
+                    $('#ahmmosfc308custLov').attr("disabled", "true");
+                    $('#ahmmosfc308custLovbtn').attr("disabled", "true");
+                    $('#ahmmosfc308DoTable input').attr("disabled", "true");
+                    $('#ahmmosfc308_btn_submit_header').attr("disabled", "true");
+                    $('#table-container .pull-left').remove();
+                    $('#table-container .pull-right').remove();
+                    $('#ahmmosfc308SubmitBtn').removeAttr("disabled");
+                    $('#ahmmosfc308DeleteBtn').removeAttr("disabled");
+                    $('#ahmmosfc308caseid').removeAttr("disabled");
+                } else {
+                    _fw_setMessage(obj, 0, "Harus ada Delivery Order yang dipilih!");
+                }
+            }
+        }
+    }
+
+    function ahmmosfc308p01Reset(obj) {
+        _fw_reset_subpage(obj);
+        refreshForm(obj, event);
+    }
+
+    function ahmmosfc308DoSearch(params) {
+        params.search = {
+            "VPLANT": $('#ahmmosfc308plant').val(),
+            "VCUST": $('#ahmmosfc308custLov').val()
+        };
+
+        if (params.sort === undefined) {
+            limitUnitLoad = params.limit;
+            offsetUnitLoad = params.offset;
+
+            return {
+                limit: params.limit,
+                offset: params.offset,
+                search: params.search
+            };
+        }
+
+        return params;
+    }
+
+    function ahmmosfc308ListPartSearch(params) {
+        params.search = {
+            "CASEID": caseid,
+            "PARTNO": partno
+        };
+
+        if (params.sort === undefined) {
+            limitUnitLoad = params.limit;
+            offsetUnitLoad = params.offset;
+
+            return {
+                limit: params.limit,
+                offset: params.offset,
+                search: params.search
+            };
+        }
+
+        return params;
+    }
+
+    function ahmmosfc308CaseSearch(params) {
+        const selectedTable = $("#ahmmosfc308DoTable").bootstrapTable("getSelections")[0];
+        params.search = {
+            "CASEID": $('#ahmmosfc308caseid').val(),
+            "VPLANT": $('#ahmmosfc308plant').val(),
+            "PARTNO": selectedTable.partnum === null ? "" : selectedTable.partnum
+        };
+
+        if (params.sort === undefined) {
+            limitUnitLoad = params.limit;
+            offsetUnitLoad = params.offset;
+
+            return {
+                limit: params.limit,
+                offset: params.offset,
+                search: params.search
+            };
+        }
+
+        return params;
+    }
+
+    function ahmmosfc308enterevt(event, obj) {
+        _fw_validation_clear(obj);
+        if (event.keyCode === 13) {
+            const selectedTable = $("#ahmmosfc308DoTable").bootstrapTable("getSelections")[0];
+            var param = {
+                "CASEID": $('#ahmmosfc308caseid').val(),
+                "VPLANT": $('#ahmmosfc308plant').val(),
+                "PARTNO": selectedTable.partnum === null ? "" : selectedTable.partnum
+            };
+            _fw_post('/jx09/ahmmosfc308-pst/rest/mo/sfc308/check-case-id', param, function (data) {
+                if (data.status === '1') {
+                    var data1 = ($("#ahmmosfc308CaseTable").bootstrapTable('getData'));
+                    if (data1.length === 0) {
+                        $("#ahmmosfc308CaseTable").bootstrapTable('refresh');
+                        $.each(data.data, function (idx, value) {
+                            $('#ahmmosfc308CaseTable').bootstrapTable('insertRow', {
+                                index: idx + 1,
+                                row: value
+                            });
+                        });
+                    } else {
+                        var checkData = true;
+                        data1.forEach((value) => {
+                            if (value.caseId === $("#ahmmosfc308caseid").val()) {
+                                checkData = false;
+                            }
+                        });
+                        if (checkData) {
+                            $("#ahmmosfc308CaseTable").bootstrapTable('refresh');
+                            $.each(data.data, function (idx, value) {
+                                $('#ahmmosfc308CaseTable').bootstrapTable('insertRow', {
+                                    index: idx + 1,
+                                    row: value
+                                });
+                            });
+                        } else {
+                            _fw_setMessage(obj, 0, $('#ahmmosfc308caseid').val() + " sudah di scan!");
+                        }
+                    }
+                } else {
+                    _fw_setMessage(obj, 0, data.message.m);
+                }
+            })
+        }
+    }
+
+    var indexRow = 0;
+    function ahmmosfc308rowNumber(value, row, index) {
+        return index + 1 + indexRow;
+    }
+
+    function ahmmosfc308DetailCase(value, row, index) {
+        return '<a onclick="ahmmosfc308DetailCaseData(this)" style="cursor:pointer">Detail</a>';
+    }
+
+    function ahmmosfc308DetailCaseData(obj) {
+        const selectedDo = $("#ahmmosfc308DoTable").bootstrapTable("getSelections")[0];
+        var row = $(obj).closest("tr");
+        var text = row.find('.text-center');
+        caseid = text[1].firstChild.data;
+        partno = selectedDo.partnum === null ? "" : selectedDo.partnum;
+        $("#ahmmosfc308DetailCaseDataTable").bootstrapTable('refresh');
+        modal.style.display = "block";
+    }
+
+    var modal = document.getElementById("modal");
+
+    var span = document.getElementsByClassName("close")[0];
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    function ahmmosfc308CloseDetailData(obj) {
+        modal.style.display = "none";
+    }
+
+    function ahmmosfc308DeleteDataCase(obj) {
+        const checkSelection = $("#ahmmosfc308CaseTable").bootstrapTable("getSelections")[0];
+        if (checkSelection) {
+            const dataSelection = $("#ahmmosfc308CaseTable").bootstrapTable("getSelections");
+            dataSelection.forEach((value) => {
+                $("#ahmmosfc308CaseTable").bootstrapTable("removeByUniqueId", value.caseId);
+            });
+        } else {
+            _fw_setMessage(obj, 0, "Pilih salah satu data!");
+        }
+    }
+
+    function ahmmosfc308Submit(obj) {
+        const checkSelection = $("#ahmmosfc308CaseTable").bootstrapTable("getSelections")[0];
+        if (checkSelection) {
+            const dataCase = $("#ahmmosfc308CaseTable").bootstrapTable("getSelections");
+            const dataDo = $("#ahmmosfc308DoTable").bootstrapTable("getSelections");
+            var param = {
+                "DATACASE": dataCase,
+                "DATADO": dataDo,
+                "VPLANT": $("#ahmmosfc308plant").val(),
+                "SLOC": $("#ahmmosfc308storageLov").val(),
+                "WCTID": $("#ahmmosfc308wctLov").val(),
+                "PRESENCE": $("#ahmmosfc308presenceDate").val(),
+                "ETD": $("#ahmmosfc308etd").val(),
+                "ETA": $("#ahmmosfc308eta").val(),
+                "NOPOL": $("#ahmmosfc308police").val(),
+                "NETTO": $("#ahmmosfc308netto").val(),
+                "BRUTO": $("#ahmmosfc308bruto").val(),
+                "MEASUREMENT": $("#ahmmosfc308measurement").val(),
+                "VCUST": $("#ahmmosfc308custLov").val(),
+                "VCUSTADDR": $("#ahmmosfc308custdesc").val()
+            };
+            _fw_post('/jx09/ahmmosfc308-pst/rest/mo/sfc308/submit-data', param, function (data) {
+                if (data.status === '1') {
+                    const dataSelection = $("#ahmmosfc308CaseTable").bootstrapTable("getSelections");
+                    dataSelection.forEach((value) => {
+                        $("#ahmmosfc308CaseTable").bootstrapTable("removeByUniqueId", value.caseId);
+                    });
+                    const checkData = $("#ahmmosfc308CaseTable").bootstrapTable("getData");
+                    if (checkData.length === 0) {
+                        $("#ahmmosfc308storageLov").val('');
+                        $("#ahmmosfc308plant").val('');
+                        $("#ahmmosfc308wctLov").val('');
+                        $('#ahmmosfc308presenceDate').val(date + '-' + months[month] + '-' + year);
+                        $('#ahmmosfc308etd').val(date + '-' + months[month] + '-' + year);
+                        $('#ahmmosfc308eta').val(date + '-' + months[month] + '-' + year);
+                        $("#ahmmosfc308police").val('');
+                        $("#ahmmosfc308netto").val('');
+                        $("#ahmmosfc308bruto").val('');
+                        $("#ahmmosfc308measurement").val('');
+                        $("#ahmmosfc308custLov").val('');
+                        $("#ahmmosfc308custdesc").val('');
+                        $('#ahmmosfc308caseid').val('');
+                        $("#ahmmosfc308CaseTable").bootstrapTable("removeAll");
+                        $("#ahmmosfc308DoTable").bootstrapTable('refresh');
+                        $('#ahmmosfc308storageLov').attr("disabled", "true");
+
+                        $('#ahmmosfc308storageLov').removeAttr("disabled");
+                        $('#ahmmosfc308storageLovbtn').removeAttr("disabled");
+                        $('#ahmmosfc308wctLov').removeAttr("disabled");
+                        $('#ahmmosfc308wctLovbtn').removeAttr("disabled");
+                        $('#ahmmosfc308presenceDate').removeAttr("disabled");
+                        $('#ahmmosfc308etd').removeAttr("disabled");
+                        $('#ahmmosfc308eta').removeAttr("disabled");
+                        $('#ahmmosfc308presenceDate').removeAttr("disabled");
+                        $('#ahmmosfc308police').removeAttr("disabled");
+                        $('#ahmmosfc308netto').removeAttr("disabled");
+                        $('#ahmmosfc308bruto').removeAttr("disabled");
+                        $('#ahmmosfc308measurement').removeAttr("disabled");
+                        $('#ahmmosfc308custLov').removeAttr("disabled");
+                        $('#ahmmosfc308custLovbtn').removeAttr("disabled");
+                        $('#ahmmosfc308DoTable input').removeAttr("disabled");
+                        $('#ahmmosfc308_btn_submit_header').removeAttr("disabled");
+                        $('#ahmmosfc308caseid').attr("disabled", "true");
+                        $('#ahmmosfc308SubmitBtn').attr("disabled", "true");
+                        $('#ahmmosfc308DeleteBtn').attr("disabled", "true");
+
+
+                        _fw_setMessage(obj, 1, "Submit Shipping List akan diproses!");
+                    } else {
+                        _fw_setMessage(obj, 1, "Submit Shipping List akan diproses!");
+                    }
+                } else {
+                    _fw_setMessage(obj, 0, data.message.JmsInvoking);
+                }
+            });
+        } else {
+            _fw_setMessage(obj, 0, "Pilih salah satu data!");
+        }
+    }
+
+</script>
